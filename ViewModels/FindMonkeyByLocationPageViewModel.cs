@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MonkeysMVVM.ViewModels
 {
-    internal class FindMonkeyByLocationPageViewModel:ViewModel
+    public class FindMonkeyByLocationPageViewModel:ViewModel
     {
     }
 }

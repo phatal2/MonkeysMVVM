@@ -64,6 +64,7 @@ namespace MonkeysMVVM.ViewModels
                 Name=monkey.Name;
                 Location=monkey.Location;
             }
+            //check if the command can work now
                 ((Command)ShowMonkeyImage).ChangeCanExecute();
         }
 

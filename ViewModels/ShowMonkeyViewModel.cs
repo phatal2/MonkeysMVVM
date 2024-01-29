@@ -51,7 +51,7 @@ namespace MonkeysMVVM.ViewModels
         public ShowMonkeyViewModel()
         {
             ShowMonkeyCommand = new Command(GetMonkey);
-            ShowMonkeyImage = new Command(ShowImage);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
+            ShowMonkeyImage = new Command(ShowImage,()=>monkey!=null);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
 
         }
 
@@ -63,8 +63,8 @@ namespace MonkeysMVVM.ViewModels
             {
                 Name=monkey.Name;
                 Location=monkey.Location;
-              //  ((Command)ShowMonkeyCommand).ChangeCanExecute();
             }
+                ((Command)ShowMonkeyImage).ChangeCanExecute();
         }
 
         private void ShowImage()

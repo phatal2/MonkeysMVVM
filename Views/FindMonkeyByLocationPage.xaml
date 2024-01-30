@@ -6,17 +6,23 @@
     xmlns:viewmodel="clr-namespace:MonkeysMVVM.ViewModels"
     Title="FindMonkeyByLocationPage"
     x:DataType="viewmodel:FindMonkeyByLocationPageViewModel">
+
+
+
     <VerticalStackLayout Margin="20">
+        <!--  שדה חיפוש  -->
         <Entry
             Margin="15"
             Placeholder="הכנס שם מדינה"
             PlaceholderColor="Green"
             Text="{Binding Country}"
             WidthRequest="250" />
+        <!--  כפתור חיפוש  -->
         <Button
             Command="{Binding SearchByCountryCommand}"
             Text="חפש"
             WidthRequest="150" />
+        <!--  מספר קופים שנמצאו בחיפוש  -->
         <Label HorizontalOptions="Center">
             <Label.FormattedText>
                 <FormattedString>
@@ -26,6 +32,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <!--  פרטי הקוף הראשון שנמצא  -->
         <Label HorizontalOptions="Center" Text="{Binding Name}" />
         <Border HeightRequest="200" WidthRequest="200">
             <Border.StrokeShape>

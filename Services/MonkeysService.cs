@@ -181,6 +181,10 @@ namespace MonkeysMVVM.Services
             monkeys.Remove(monkey);
         }
 
+        public List<Monkey> FindMonkeyByLocation(string location)
+        {
+            return monkeys.Where(x => x.Location == location).ToList();
+        }
      
     }
 }

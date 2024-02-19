@@ -13,10 +13,21 @@ namespace MonkeysMVVM.ViewModels
     public class MonkeysPageViewModel : ViewModel
     {
         public ObservableCollection<Monkey> Monkeys { get; set; }
+        public Monkey SelectedMonkey { get; set; }
         public ICommand LoadMonkeysCommand { get; private set; }
+        public ICommand GoToShowMonkeyView {  get; private set; }
         MonkeysPageViewModel()
-        { 
+        {
+            GoToShowMonkeyView = new Command(async () => await GoToShowMonkey());
+            LoadMonkeysCommand = new Command(async () => await LoadMonkeys());
+
             Monkeys = new ObservableCollection<Monkey>();
+        }
+        private async Task GoToShowMonkey()
+        {
+            Dictionary<string, object> data = new Dictionary<string, object>();
+            data.Add("Monkey", SelectedMonkey);
+            await AppShell.Current.GoToAsync("GoToShowMonkey", data);
         }
         private async Task LoadMonkeys()
         {
@@ -25,7 +36,7 @@ namespace MonkeysMVVM.ViewModels
             Monkeys.Clear();
             foreach (var monkey in list)
                 Monkeys.Add(monkey);
-            
         }
+
     }
 }

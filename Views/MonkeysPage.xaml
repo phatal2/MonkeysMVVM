@@ -10,11 +10,13 @@
     <ScrollView Margin="10">
         <StackLayout>
             <CollectionView EmptyView="no monkeys" ItemsSource="{Binding Monkeys}" />
+            <Button Command="{Binding NavigateToShowMonkeyView}" Text="Go to monkey view" />
             <Button
                 Command="{Binding AddMonkeysCommand}"
                 FontAttributes="Bold"
                 HeighRequest="50"
                 Text="enter monkey" />
+
         </StackLayout>
     </ScrollView>
 

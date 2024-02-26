@@ -12,12 +12,15 @@ namespace MonkeysMVVM.ViewModels
 {
     public class MonkeysPageViewModel : ViewModel
     {
+        private MonkeysService service;
         public ObservableCollection<Monkey> Monkeys { get; set; }
         public Monkey SelectedMonkey { get; set; }
         public ICommand LoadMonkeysCommand { get; private set; }
         public ICommand GoToShowMonkeyView {  get; private set; }
-        MonkeysPageViewModel()
+        MonkeysPageViewModel(MonkeysService s)
         {
+            service = s;
+
             GoToShowMonkeyView = new Command(async () => await GoToShowMonkey());
             LoadMonkeysCommand = new Command(async () => await LoadMonkeys());
 
@@ -31,7 +34,6 @@ namespace MonkeysMVVM.ViewModels
         }
         private async Task LoadMonkeys()
         {
-            MonkeysService service = new MonkeysService();
             var list = await service.GetMonkeys();
             Monkeys.Clear();
             foreach (var monkey in list)

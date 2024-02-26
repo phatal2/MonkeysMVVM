@@ -14,6 +14,7 @@ namespace MonkeysMVVM.ViewModels
 {
     public class ShowMonkeyViewModel:ViewModel
     {
+        private MonkeysService service;
         Monkey monkey;
         public ICommand ShowMonkeyCommand { get; set; }
         public ICommand ShowMonkeyImage { get; set; }   
@@ -48,16 +49,16 @@ namespace MonkeysMVVM.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ShowMonkeyViewModel()
+        public ShowMonkeyViewModel(MonkeysService s)
         {
-            ShowMonkeyCommand = new Command(GetMonkey);
-            ShowMonkeyImage = new Command(ShowImage,()=>monkey!=null);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
+            service = s;
 
+            ShowMonkeyCommand = new Command(GetMonkey);
+            ShowMonkeyImage = new Command(ShowImage, () => monkey != null);//new Command(()=>{if (monkey != null)ImageUrl = monkey.ImageUrl;)}
         }
 
         private void GetMonkey()
         {
-            MonkeysService service = new MonkeysService();
             monkey = service.GetRandomMonkey();
             if (monkey != null)
             {

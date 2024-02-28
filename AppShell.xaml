@@ -3,12 +3,31 @@
     x:Class="MonkeysMVVM.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MonkeysMVVM"
+    xmlns:local="clr-namespace:MonkeysMVVM.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MonkeysPage}"
+            Route="MainPage" />
+        <Tab Icon="https://uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png">
+            <ShellContent
+                Title="סינון"
+                ContentTemplate="{DataTemplate local:FindMonkeyByLocationPage}"
+                Icon="https://uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png" />
+        </Tab>
+    </TabBar>
+
+    <!--<FlyoutItem Title="Home" FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MonkeysPage}"
+            Route="MainPage" />
+        <ShellContent
+            Title="סינון"
+            ContentTemplate="{DataTemplate local:FindMonkeyByLocationPage}"
+            Icon="https://uxwing.com/wp-content/themes/uxwing/download/user-interface/search-icon.png" />
+    </FlyoutItem>-->
 
 </Shell>
